@@ -32,9 +32,9 @@ The project provided ARM release files. You can download from https://github.com
 
 ##### Notepad3
 Notepad3 is a enhanced Notepad2. It supports many features. It is easy to port Notepad3, minipath and related languages. But it is difficult to port grepWinNP3.   
-In order to build x86 and x64 versions of grepWinNP3, it use NuGet to download boost libary and import to VS2019 project. Unfortunately, NuGet can't get ARM 
+In order to build x86 and x64 versions of grepWinNP3, it uses NuGet to download boost libary and import to VS2019 project. Unfortunately, NuGet can't get ARM 
 version of boost library. I guess that there are no arm versions for all libaries at all, not only boost. You must download boost and compile it manually. Below 
-is build steps for boost:
+is build steps for boost:   
 (1) Open Developer command prompt  
 (2) Enter boost uncompressed folder, and run bootstrap.bat to generate b2.exe.   
 (3) Enter C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build, run vcvarsamd64_arm.bat if your host machine is Windows 64Bit. I don't 
@@ -49,11 +49,11 @@ Size of compiled boost library files is huge. I don't provide them. If you want 
 ##### 7-Zip
 7-Zip doesn't provide Arm32 version in its official website. Even though you can download arm32 version from sourceforge, eg.https://sourceforge.net/projects/sevenzip/files/7-Zip/22.01/,   
 but the exe and dll is not signed. It can not work under Windows RT 8.1. I split the arm32 version over two parts: 7zInstaller.exe and 7z archive. And I signed related files. Then re-generate a new installer execute file. 
-If you want to use context menu, you need set owner and full control permission to below registry items:   
-HKEY_CLASSES_ROOT\\*\shellex\ContextMenuHandlers
-HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers
-HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers
-HKEY_CLASSES_ROOT\Directory\shellex\DragDropHandlers
+If you want to use context menu, you need set owner as Administrators group and full control permission to below registry items:   
+HKEY_CLASSES_ROOT\\*\shellex\ContextMenuHandlers   
+HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers   
+HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers   
+HKEY_CLASSES_ROOT\Directory\shellex\DragDropHandlers   
 HKEY_CLASSES_ROOT\Drive\shellex\DragDropHandlers   
 After changed above registry items:   
 For portable version, click Options of 7-Zip File Manager and check Integrate 7-Zip to shell context menu.    
