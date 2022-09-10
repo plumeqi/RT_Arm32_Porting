@@ -7,7 +7,7 @@ I compiled them using Visual Studio 2019 with installing individual ARM componen
 ##### Notepad++ 8.4.4
 I modified some codes to support Arm32:
 - Add Arm32 Arch_Type
-- Disable AutoUpdate
+- Disable AutoUpdate  
 NppShell had been ported. You can run command prompt as Administrator and input regsvr32 /i NppShell.dll to install ContextMenu.  
 But, you must add Administrators group to HKEY_CLASSES_ROOT and set permission to Full Control. You also must add Administrators 
 group to HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers and set permission to Full Control. You can run SetContextMenu.cmd as 
@@ -48,7 +48,16 @@ Size of compiled boost library files is huge. I don't provide them. If you want 
 
 ##### 7-Zip
 7-Zip doesn't provide Arm32 version in its official website. Even though you can download arm32 version from sourceforge, eg.https://sourceforge.net/projects/sevenzip/files/7-Zip/22.01/,   
-but the exe and dll is not signed. It can not work under Windows RT 8.1. Of course， you can extract 7z2201-arm.exe and signed related files. 
+but the exe and dll is not signed. It can not work under Windows RT 8.1. I split the arm32 version over two parts: 7zInstaller.exe and 7z archive. And I signed related files. Then re-generate a new installer execute file. 
+If you want to use context menu, you need set owner and full control permission to below registry items:   
+HKEY_CLASSES_ROOT\\*\shellex\ContextMenuHandlers
+HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers
+HKEY_CLASSES_ROOT\Folder\shellex\ContextMenuHandlers
+HKEY_CLASSES_ROOT\Directory\shellex\DragDropHandlers
+HKEY_CLASSES_ROOT\Drive\shellex\DragDropHandlers   
+After changed above registry items:   
+For portable version, click Options of 7-Zip File Manager and check Integrate 7-Zip to shell context menu.    
+For 7-Zip Installer, run installer execute file to install.   
 
 ##### WinMerge
 You can not find arm32 version of WinMerge from WinMerge.org, but you can find it from https://github.com/WinMerge/winmerge/. You need resign each of files for working under Windows RT 8.1.   
